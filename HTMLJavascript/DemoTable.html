@@ -1,0 +1,173 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Demo table html</title>
+        <!-- <link rel="stylesheet" href="C:/Users/T460/Desktop/SoHoa.Net/SoHoa_V1/SoHoa.WebUI/Content/bootstrap/css/bootstrap.css"> -->
+        <style>
+
+            #myTable {
+                display: none;
+                border-collapse: collapse;
+                width: 100%;
+                border: 1px solid #ddd;
+                font-size: 20px;
+            }
+
+            #myTable th, #myTable td {
+                text-align: center;
+                padding: 12px;
+                border-right: 1px solid #ddd;
+            }
+
+            #myTable tr {
+                border-bottom: 1px solid #ddd;
+            }
+
+            .container {
+                width: 500px;
+                margin: auto;
+            }
+            #myTable tr.header, #myTable tr:hover{
+                background-color: rgb(240, 176, 176);
+            }
+            #myInput {
+                margin-left: 160px;
+                margin-bottom: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2 style="color: blue;">
+                Tao đang thực hiện một bảng để hiển thị dữ liệu
+            </h2>
+            <input type="text" id="myInput" placeholder="Nhap vao ky tu de tim kiem..." title="Nhap vao">
+            <table id="myTable">
+                <tr class="header">
+                    <th style="width: 60%">
+                        Sach
+                    </th>
+                    <th style="width: 40%">
+                        Cap
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Tieng Anh
+                    </td>
+                    <td>
+                        Cap 1
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Tieng Anh
+                    </td>
+                    <td>
+                        Cap 2
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Toan 
+                    </td>
+                    <td>
+                        Lop 1
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Ngu Van
+                    </td>
+                    <td>
+                        Lop 2
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Lich su
+                    </td>
+                    <td>
+                        Lop 3
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Giai tich
+                    </td>
+                    <td>
+                        Lop 5
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Vat ly dai cuong
+                    </td>
+                    <td>
+                        Dai hoc
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Toan roi rac
+                    </td>
+                    <td>
+                        Dai hoc nam 2
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Cong nghe phan mem
+                    </td>
+                    <td>
+                        Hoc ca doi
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <script>
+        // Lấy thẻ input mà có ID giống như Id truyền vào
+        var input = document.getElementById("myInput");
+        // Định nghĩa 1 function để thực hiện việc tìm kiếm
+        function search() {
+            var filter, table, tr, td, i;
+            // lay gia tri nhap vao
+            filter = input.value.toUpperCase();
+            // lay bang can hien thi ket qua tim kiem
+            table = document.getElementById("myTable");
+            // lay cac tr trong table ra 
+            tr = document.getElementsByTagName("tr");
+            var length = tr.length;
+            // Neu filter khong co gia tri trong table, khong khop voi gia tri nao
+            if (!filter) {
+                //
+                table.style.display = "none";
+            }
+            else {
+                for(i = 0; i < length; i++) {
+                    // Lay cai thang td o column 1 de minh so sanh gia tri
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        // kiem tra xem thang gia tri filter kia co gia tri nao khop voi gia tri cua td khong
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            // neu co thang nao trung khp thi minh hien thi table va row trung khop len
+                            table.style.display = "table";
+                            tr[i].style.display = "";
+                        }
+                        else {
+                            //
+                            tr[i].style.display = "none";
+                        }
+
+                    }
+                }
+            }
+        }
+
+        input.addEventListener("keyup", search);
+
+    </script>
+</html>
