@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>
+            Demo <select name="" id=""></select> tag
+        </title>
+    </head>
+    <body>
+        Làm ơn hãy sử dụng tôi đi
+        <select name="gender" id="gender" onchange="genderChange(this)">
+            <option value="">-- Mời bạn chọn giới tính --</option>
+            <option value=""></option>
+            <option value="nam">Nam</option>
+            <option value="nu">Nữ</option>
+            <option value="khac">Khác</option>
+        </select>
+        <span style="color: red;" id="message_error"></span>
+    </body>
+    <script language="javascript">
+       function genderChange(object) {
+           var message_error = document.getElementById("message_error");
+           var optionValue = object.value;
+           if (optionValue === '') {
+                message_error.innerHTML = "Bạn chưa chọn giới tính gì";
+           }
+           else if (optionValue === 'nam') {
+                message_error.innerHTML = "Bạn đã chọn giới tính nam";
+           }
+       }
+    </script>
+</html>

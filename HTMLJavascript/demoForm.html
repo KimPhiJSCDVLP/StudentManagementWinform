@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Học javascript và html để biểu diễn một form nhập liệu</title>
+        <meta charset="UTF-8">
+        <script>
+            // function login() {
+            //     var userName = "admin";
+            //     var passw0rd = "123456";
+            //     var username = document.getElementById("username").value;
+            //     var password = document.getElementById("password").value;
+            //     if (userName === username && passw0rd === password) {
+            //         alert("Bạn đã đăng nhập thành công!!!");
+            //     }
+            //     else {
+            //         alert("Đăng nhập không thành công, làm ơn thử lại!!!");
+            //     }
+            // }
+
+            function validate() {
+                var range = ""
+                var username = document.getElementById("username").value.trim();
+                var password = document.getElementById("password").value.trim();
+                var rePassword = document.getElementById("rePassword").value.trim();
+                var phoneNumber = document.getElementById("phoneNumber").value.trim();
+                var email = document.getElementById("email").value.trim();
+                if (username.includes("#")) {
+                    var username_error = document.getElementById("username_error");
+                    username_error.innerHTML = "Thông tin tài khoản nhập vào có chứa ký tự đặc biệt";
+                    alert("Thông tin tài khoản nhập vào có chứa ký tự đặc biệt");
+                }
+                if (password.includes("#")) {
+                    var password_error = document.getElementById("password_error");
+                    password_error.innerHTML = "Thông tin mật khẩu nhập vào có chứa ký tự đặc biệt";
+                    alert("Thông tin mật khẩu nhập vào có chứa ký tự đặc biệt");
+                }
+                if (rePassword.includes("#")) {
+                    var rePassword_error = document.getElementById("rePassword_error");
+                    rePassword_error.innerHTML = "Thông tin mật khẩu nhập vào có chứa ký tự đặc biệt";
+                    alert("Thông tin mật khẩu nhập vào có chứa ký tự đặc biệt");
+                }
+                if (phoneNumber.includes("#")) {
+                    var phoneNumber_error = document.getElementById("phoneNumber_error");
+                    phoneNumber_error.innerHTML = "Thông tin số tài khoản nhập vào có chứa ký tự đặc biệt";
+                }
+                if (email.includes("#")) {
+                    var email_error = document.getElementById("email_error");
+                    email_error.innerHTML = "Thông tin email nhập vào có chứa ký tự đặc biệt";
+                }
+                if (password !== rePassword) {
+                    var rePassword_error = document.getElementById("rePassword_error");
+                    rePassword_error.innerHTML = "Thông tin mật khẩu được nhập lại không chính xác";
+                }
+            }
+            function validateRepassword() {
+                var password = document.getElementById("password").value.trim();
+                var rePassword = document.getElementById("rePassword").value.trim();
+                if (password !== rePassword) {
+                    var repassword_error = document.getElementById("repassword_error");
+                    repassword_error.innerHTML = "Thông tin mật khẩu được nhập lại không chính xác";
+                }
+            }
+
+            function validateUserName() {
+                var username = document.getElementById("username").value.trim();
+                if (!username) {
+                    var username_error = document.getElementById("username_error");
+                    username_error.innerHTML = "Thông tin tài khoản phải được nhập và không được để trống";
+                }
+                if (username.length > 8) {
+                    var username_error = document.getElementById("username_error");
+                    username_error.innerHTML = "Thông tin tài khoản nhập vào phải nhỏ hơn 8 ký tự";
+                }
+            }
+        </script>
+        <style>
+            input {
+                width: 400px;
+            }
+            span {
+                color: red;
+            }
+            #btn {
+                margin-top: 10px;
+                margin-right: 109px;
+            }
+        </style>
+    </head>
+    <body style="text-align: center; margin-left: 140px;">
+        <form action="" method="" id="loginForm" name="">
+            <table border="1" cellpadding="1" style="width: 1000px;">
+                <tr>
+                    <td>
+                        <label>Tên đăng nhập:</label>
+                    </td>
+                    <td>
+                        <input onblur="validateUserName()"  type="text" id="username" name="username" placeholder="Tên đăng nhập">
+                        <br>
+                        <span id="username_error"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Mật khẩu:</label>
+                    </td>
+                    <td>
+                        <input onblur="validateRepassword()"  type="password" id="password" name="password" placeholder="Mật khẩu">
+                        <br>
+                        <span id="password_error"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Nhập lại mật khẩu:</label>
+                    </td>
+                    <td>
+                        <input onblur="validateRepassword()" type="password" id="rePassword" name="rePassword" placeholder="Nhập lại mật khẩu">
+                        <br>
+                        <span id="repassword_error"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Số điện thoại:</label>
+                    </td>
+                    <td>
+                        <input onblur="validateRepassword()"  type="text" id="phoneNumber" name="phoneNumber" placeholder="Số điện thoại">
+                        <br>
+                        <span id="phonenumber_error"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Email:</label>
+                    </td>
+                    <td>
+                        <input onblur="validateRepassword()"  type="email" id="email" name="email" placeholder="Email">
+                        <br>
+                        <span id="email_error"></span>
+                    </td>
+                </tr>
+            </table>
+            <input onclick="validate()" type="submit" id="btn" name="btn" value="Kiểm tra dữ liệu">
+        </form>
+    </body>
+</html>

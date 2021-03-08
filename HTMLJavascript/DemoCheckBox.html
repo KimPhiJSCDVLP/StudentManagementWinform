@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>
+            Demo checkbox tag
+        </title>
+    </head>
+    <body>
+        Làm ơn hãy click vào tôi đi
+        <input type="checkbox" value="0" id="checkboxdemo"/>
+        <input type="button" id="btn1" value="Chọn">
+        <input type="button" id="btn2" value="Bỏ chọn">
+    </body>
+    <script language="javascript">
+        document.getElementById("btn1").onclick = function () {
+            document.getElementById("checkboxdemo").checked = true;
+        }
+
+        document.getElementById("btn2").onclick = function () {
+            document.getElementById("checkboxdemo").checked = false;
+        }
+    </script>
+</html>
